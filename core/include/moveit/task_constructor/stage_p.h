@@ -43,6 +43,8 @@
 #include <moveit/task_constructor/cost_terms.h>
 #include <moveit/task_constructor/cost_queue.h>
 
+#include <rclcpp/rclcpp.hpp>
+
 #include <ostream>
 #include <chrono>
 
@@ -193,6 +195,7 @@ private:
 	InterfaceWeakPtr next_starts_;  // interface to be used for sendForward()
 
 	Introspection* introspection_;  // task's introspection instance
+	inline static const rclcpp::Logger LOGGER = rclcpp::get_logger("stage_private");
 };
 PIMPL_FUNCTIONS(Stage)
 std::ostream& operator<<(std::ostream& os, const StagePrivate& stage);
